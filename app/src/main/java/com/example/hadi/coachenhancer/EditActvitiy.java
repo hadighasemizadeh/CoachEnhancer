@@ -1,8 +1,12 @@
 package com.example.hadi.coachenhancer;
 
+import android.app.FragmentManager;
+import android.app.Service;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -21,8 +25,9 @@ import java.util.Random;
 /**
  * Created by Hadi on 1/29/2017.
  */
-
 public class EditActvitiy extends AppCompatActivity  implements View.OnTouchListener, View.OnClickListener {
+    private boolean isSignedIn = true;
+    public FragmentManager manager;
 
     private static final String TAG = "FingerPaint";
     DrawOnView drawView;
@@ -58,6 +63,37 @@ public class EditActvitiy extends AppCompatActivity  implements View.OnTouchList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R. layout.activity_edit);
+
+        (new Thread(new Runnable()
+        {
+
+            @Override
+            public void run()
+            {
+                while (!Thread.interrupted())
+                    try
+                    {
+                        Thread.sleep(1000);
+                        Log.d("SleepTime", "local Thread sleeping");
+                        runOnUiThread(new Runnable() // start actions in UI thread
+                        {
+
+                            @Override
+                            public void run()
+                            {
+                                CheckConnectivity(); // this action have to be in UI thread
+                            }
+                        });
+                    }
+                    catch (InterruptedException e)
+                    {
+                        // ooops
+                    }finally {
+                        CheckConnectivity();
+                    }
+            }
+        })).start();
+
         isDrawable = false;
         isDeletable = false;
 
@@ -306,7 +342,38 @@ public class EditActvitiy extends AppCompatActivity  implements View.OnTouchList
 
     public void backToMainMenu(View view) {
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("isSignedIn",true);
         startActivity(intent);
+        Bundle b = new Bundle();
+        b.putBoolean("isSignedIn",true);
+        Log.d("Error","I am here!!");
+    }
+    public void CheckConnectivity(){
+
+        if(!isSignedIn)
+            return;
+
+        ConnectivityManager connectivityManager = (ConnectivityManager)
+                this.getSystemService(Service.CONNECTIVITY_SERVICE);
+        if(connectivityManager!=null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if(networkInfo!=null){
+                if(networkInfo.getState()== NetworkInfo.State.CONNECTED){
+                    return;
+                }
+            }else{
+                RestartApp(false);
+            }
+        }
+        RestartApp(false);
+    }
+
+    public void RestartApp(boolean state){
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("isSignedIn",false);
+        startActivity(intent);
+        Bundle b = new Bundle();
+        b.putBoolean("isSignedIn",false);
         Log.d("Error","I am here!!");
     }
 }

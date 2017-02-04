@@ -11,14 +11,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         android:ems="10"
+        android:id="@+id/enteremailsignin"
+        android:hint="Email"
         android:layout_marginLeft="20sp"
         android:layout_marginRight="20sp"
-        android:id="@+id/emailenter_textview"
-        android:hint="Email"
-        android:background="#ffffff"
-        android:layout_marginTop="10sp" />
+        android:layout_marginTop="10sp"
+        android:background="#ffffff" />
 
     <EditText
         android:layout_width="match_parent"
@@ -32,29 +32,29 @@
         android:hint="Password"
         android:background="#ffffff"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20sp"-->
+        <!--android:layout_marginRight="20sp">-->
 
-        <CheckBox
-            android:text="Remember Me"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/forgetpassword"
-            android:layout_weight="1" />
+        <!--<CheckBox-->
+            <!--android:text="Remember Me"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/forgetpassword"-->
+            <!--android:layout_weight="1" />-->
 
-        <TextView
-            android:text="Forget Password?"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:layout_weight="1"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:text="Forget Password?"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textAlignment="viewStart"-->
+            <!--android:textAllCaps="false" />-->
+    <!--</LinearLayout>-->
 
     <Button
         android:layout_marginLeft="50sp"
@@ -62,5 +62,11 @@
         android:text="Confirm"
         android:layout_width="106dp"
         android:layout_height="wrap_content"
-        android:id="@+id/confirmsignupbtn" />
+        android:id="@+id/confirmsigninbtn" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultsigninconf" />
 </LinearLayout>

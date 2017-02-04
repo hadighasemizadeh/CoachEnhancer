@@ -27,14 +27,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="replaceFragmentTeam"
-            android:id="@+id/button5"
+            android:id="@+id/teambtnmain"
             android:layout_weight="1" />
 
         <Button
             android:text="Manage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button4"
+            android:id="@+id/managebtnmain"
             android:onClick="replaceFragmentManager"
             android:layout_weight="1" />
 
@@ -42,7 +42,7 @@
             android:text="MATCH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3"
+            android:id="@+id/matchbtnmain"
             android:onClick="replaceFragmentMatch"
             android:layout_weight="1" />
 
@@ -50,7 +50,7 @@
             android:text="CHAT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/chatbtnmain"
             android:onClick="replaceFragmentChat"
             android:layout_weight="1" />
 
@@ -58,7 +58,7 @@
             android:text="SETTINGS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/settingsbtnmain"
             android:onClick="replaceFragmentSetting"
             android:layout_weight="1" />
     </LinearLayout>
